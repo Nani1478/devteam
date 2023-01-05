@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="8c9238b1-c09f-4467-9faa-dec7aa613dbb" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="onprimeFlow" doc:id="8d85cc1a-deab-4b6b-8a03-cdf03918831b" >
+		<http:listener doc:name="Listener" doc:id="be6f34b4-2c72-4a93-a0be-6f13c40e1202" config-ref="HTTP_Listener_config" path="/on"/>
+		<logger level="INFO" doc:name="Testing Stage" doc:id="59de8392-6470-4c74-bb8e-55558ceae94b" message="Testing"/>
+		<set-payload value="#['deployed using local server or onprime platform ']" doc:name="Set Payload" doc:id="89e3d0f7-9176-41b4-84e4-77d83623bc44" />
+	</flow>
+</mule>
